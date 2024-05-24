@@ -11,6 +11,7 @@ pipeline{
         stage("Terraform Init"){
             steps{
                 sh "terrafile -f env-${ENV}/Terrafile"
+                sh "cd mutable-infra"
                 sh "terraform init -backend-config=env-dev/dev-backend.tfvars"
             }
 
@@ -18,12 +19,14 @@ pipeline{
 
         stage("Terraform Plan"){
             steps{
+                sh "cd mutable-infra"
                 sh "terraform plan -var-file=env-${ENV}/${ENV}.tfvars"
             }
 
         }
         stage("Terraform Action"){
             steps{
+                sh "cd mutable-infra"
                 sh "terraform ${ACTION} -auto-approve -var-file=env-${ENV}/${ENV}.tfvars"
             }
 
