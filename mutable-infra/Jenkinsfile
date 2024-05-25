@@ -1,3 +1,10 @@
+@Library('roboshop-shared-library@main') _
+
+env.REPONAME="cart"
+env.TFDIR="mutable-infra"
+backendInfra()
+
+
 pipeline{
     agent any
     options {
