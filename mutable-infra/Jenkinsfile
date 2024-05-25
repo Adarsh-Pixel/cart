@@ -2,7 +2,7 @@
 
 env.REPONAME="cart"
 env.TFDIR="mutable-infra"
-backendInfra()
+backendinfra()
 
 // TFDIR - is Terraform mutable
 // pipeline{
